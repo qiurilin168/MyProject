@@ -1,0 +1,82 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 7025
+  Date: 2017/9/4
+  Time: 19:11
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>查看楼盘图片</title>
+    <%@include file="../master/style.inc.jsp"%>
+</head>
+<body>
+<div class="container">
+    <div class="row" style="margin-left:5%;margin-top:30px">
+        <a href="<%=path %>/builds/listPage" class="btn btn-primary">返回列表</a>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12">
+            <h3 class="text-center" id="buildingsId">${requestScope.buildingsId }</h3>
+            <div>
+                <img src="<%=path %>/${requestScope.buildingsImgs[0].imgPath}">
+                <label class="">图片介绍</label>
+                <button class="btn btn-warning">删除</button>
+            </div>
+            <div>
+                <img src="<%=path %>/img/model_default.jpg">
+                <label class="">图片介绍</label>
+                <button class="btn btn-warning">删除</button>
+            </div>
+            <div>
+                <img src="<%=path %>/img/model_default.jpg">
+                <label class="">图片介绍</label>
+                <button class="btn btn-warning">删除</button>
+            </div>
+            <div>
+                <img src="<%=path %>/img/model_default.jpg">
+                <label class="">图片介绍</label>
+                <button class="btn btn-warning">删除</button>
+            </div>
+            <div>
+                <img src="<%=path %>/img/model_default.jpg">
+                <label class="">图片介绍</label>
+                <button class="btn btn-warning">删除</button>
+            </div>
+            <div>
+                <img src="<%=path %>/img/model_default.jpg">
+                <label class="">图片介绍</label>
+                <button class="btn btn-warning">删除</button>
+            </div>
+            <div>
+                <img src="<%=path %>/img/model_default.jpg">
+                <label class="">图片介绍</label>
+                <button class="btn btn-warning">删除</button>
+            </div>
+            <div>
+                <img src="<%=path %>/img/model_default.jpg">
+                <label class="">图片介绍</label>
+                <button class="btn btn-warning">删除</button>
+            </div>
+            <div class="row">
+                <nav aria-label="..." class="text-center">
+                    <ul class="pager">
+                        <li><a href="<%=path%>/builds/imgList?page=${requestScope.pageNo - 1}">上一页</a></li>
+                        <li><a href="<%=path%>/builds/imgList?page=${requestScope.pageNo + 1}">下一页</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<%@include file="../master/script.inc.jsp"%>
+<script>
+    $(function () {
+        var buildingsId = $("#buildingsId").text();
+        $.post("/builds/imgList?buildingsId=" + buildingsId, "json"
+        );
+    });
+</script>
+</html>

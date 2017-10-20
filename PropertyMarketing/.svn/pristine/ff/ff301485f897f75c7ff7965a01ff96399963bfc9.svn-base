@@ -1,0 +1,31 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/9/6
+  Time: 20:30
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<div>
+    <ul class="nav nav-tabs  edge">
+        <li ><h6 ><a href="#">首页 &nbsp; &nbsp;</a></h6></li>
+        <li><h6><a href="#">&nbsp;&nbsp;新房 &nbsp;&nbsp;</a></h6></li>
+        <li><h6><a href="#">&nbsp;&nbsp;经济人 &nbsp;&nbsp;</a></h6></li>
+        <li><h6><a href="#">&nbsp;&nbsp;二手房 &nbsp;&nbsp;</a></h6></li>
+        <li class="pull-right "><h6><a href="${pageContext.request.contextPath }/login.jsp">&nbsp;&nbsp;注册</a></h6></li>
+        <li class="pull-right"><h6><a href="${pageContext.request.contextPath }/login.jsp">&nbsp;&nbsp;登入 &nbsp;&nbsp;</a></h6></li>
+    </ul>
+</div>
+<div class="edges">
+        <span class=" logo">
+            <a>
+                <img src="${pageContext.request.contextPath }/picture/LOGO.png"  alt="Responsive image">
+            </a>
+        </span>
+    <form class="navbar-form search pull-right">
+        <input type="text" class="form-control"placeholder="请输入您要搜索的关键词    ">
+        <button type="submit" class="btn">搜索</button>
+    </form>
+</div>
+

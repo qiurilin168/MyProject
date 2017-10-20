@@ -1,0 +1,24 @@
+package com.ht.service;
+
+import com.ht.bean.Activity;
+import com.ht.common.bean.Pager;
+import com.ht.vo.PrefectActivity;
+
+import java.util.List;
+
+/**
+ * Created by sweet on 2017/8/31.
+ */
+public interface ActivityService extends BaseService<String, Activity> {
+
+    Pager<Activity> activityPager(Pager<Activity> pager);
+
+    Pager<Activity> pager(Pager<Activity> pager);
+
+    /**
+     * 随机获取活动
+     * @param size 活动数
+     * @return
+     */
+    List<Activity> randomAct(int size);
+}

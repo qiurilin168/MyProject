@@ -1,0 +1,76 @@
+package com.ht.dao.impl;
+
+import com.ht.bean.BuildingsImg;
+import com.ht.common.bean.Pager;
+import com.ht.dao.AbstractBaseDAO;
+import com.ht.dao.BuildingsImgDAO;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+import java.util.List;
+
+/**
+ * Created by 7025 on 2017/9/2.
+ */
+public class BuildingsImgDAOImpl extends AbstractBaseDAO implements BuildingsImgDAO {
+    @Override
+    public void save(BuildingsImg buildingsImg) {
+        getSessionFactory().getCurrentSession().save(buildingsImg);
+    }
+
+    @Override
+    public void update(BuildingsImg buildingsImg) {
+
+    }
+
+    @Override
+    public void updateStatus(BuildingsImg buildingsImg) {
+
+    }
+
+    @Override
+    public void remove(BuildingsImg buildingsImg) {
+        getSessionFactory().getCurrentSession().remove(buildingsImg);
+    }
+
+    @Override
+    public Pager<BuildingsImg> listByPager(Pager<BuildingsImg> pager) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public BuildingsImg getById(String s) {
+        return null;
+    }
+
+    @Override
+    public List<BuildingsImg> ListAll(String s) {
+        return null;
+    }
+
+    @Override
+    public Pager<BuildingsImg> listByPager(Pager<BuildingsImg> pager, String id) {
+        Session session = getSessionFactory().getCurrentSession();
+        Query query = session.createQuery("from BuildingsImg where Buildings.id=:id order by createdTime desc");
+        query.setParameter("id", id);
+        query.setMaxResults(pager.getPageSize());
+        query.setFirstResult(pager.getBeginIndex());
+        Pager<BuildingsImg> pager1 = new Pager<BuildingsImg>();
+        pager1.setResults(query.list());
+        pager1.setPage(pager.getPage());
+        return pager1;
+    }
+
+    @Override
+    public long count(String id) {
+        Session session = getSessionFactory().getCurrentSession();
+        Query query = session.createQuery("select count(id) from BuildingsImg where buildings.id=:id");
+        query.setParameter("id", id);
+        return (long)query.uniqueResult();
+    }
+}

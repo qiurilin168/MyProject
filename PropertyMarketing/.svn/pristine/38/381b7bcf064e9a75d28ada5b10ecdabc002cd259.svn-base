@@ -1,0 +1,93 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/9/13
+  Time: 14:51
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+%>
+<html>
+<head>
+    <title>户型详情</title>
+    <link rel="stylesheet" href="<%=path%>/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=path%>/css/mains.css">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=path%>/img/Favicon.ico" />
+    <link href="<%=path%>/css/nanogallery.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="<%=path%>/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="<%=path%>/js/jquery.nanogallery.js"></script>
+    <%--<script type="text/javascript" src="<%=path%>/js/main.js.js"></script>--%>
+    <script>
+        $(document).ready(function () {
+            jQuery("#nanoGallery2").nanoGallery({thumbnailWidth:160,thumbnailHeight:160,
+                itemsBaseURL:'picture',
+                displayCaption:true,
+                //thumbnailHoverEffect:[{'name':'imageRotateCornerBL','duration':300},{'name':'borderLighter'}],
+                thumbnailHoverEffect:[{'name':'overScale','duration':300},{'name':'borderLighter'}],
+                colorScheme:'light'
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+<%--首版和搜索--%>
+<%@ include file="../master/head.jsp" %>
+
+<%--导航条--%>
+<div class=" navbar-collapse collapse nav navbar-default">
+    <ul class="nav navbar-nav ">
+        <li><a href="<%=path%>#" class="nav_bg">&nbsp;首页</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">楼盘</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">楼栋</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">新闻</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">活动</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">文章</a></li>
+    </ul>
+</div>
+
+<%--楼盘详情--%>
+<div class="margin">
+    <div class="col-sm-12 col-md-12 col-lg-12 ">
+        <div class="col-lg-12 col-md6 col-lg-6 thumbnail">
+            <img src="<%=path%>/img/type/housetype1.JPG">
+        </div>
+        <div class="col-lg-12 col-md6 col-lg-6  install">
+            <h3><a href="#">两室两厅一卫</a></h3>
+            <p><span class="text08">参考价格：</span><span class="text07"> 9000 </span>元/㎡</p>
+            <p><span class="text08">面积：</span><span>86</span>㎡</p>
+            <p><span class="text08">楼盘名称：</span><span>伟伟1号</span></p>
+            <p><span class="text08">开发商：</span><span>伟伟那甲旅业开发有限公司</span></p>
+            <p><span class="text08">地址：</span><span>海口市西海岸新区粤海大道与南海大道交汇处</span></p>
+            <p><span class="text08">简介：</span><span>十里桃花见证了夜华与白浅的三世情缘，而这样的人间仙境就在翡翠谷。
+                白浅与夜华用了三生三世才建立起的美满小家，如今你只需要一步就能抵达。</span></p>
+        </div>
+    </div>
+</div>
+<%--楼盘户型--%>
+<div class="margin">
+    <div class="col-sm-12 col-md-12 col-lg-12 ">
+        <div class="buy_tab ">
+            <span>室内效果</span>
+            <a class="pull-right" href="<%=path%>#" >更多</a>
+        </div>
+        <div id="nanoGallery2" class="pull-left" >
+            <a class="pull-left" href="<%=path%>/housetype1.JPG" data-ngthumb="housetype1.JPG" data-ngdesc="sdsad">2室2厅1卫</a>
+            <a href="<%=path%>/housetype2.JPG" data-ngthumb="housetype2.JPG" data-ngdesc="sdsad">3室2厅3卫</a>
+            <a href="<%=path%>/housetype3.JPG" data-ngthumb="housetype3.JPG" data-ngdesc="sdsad">2室2厅2卫</a>
+            <a href="<%=path%>/housetype4.JPG" data-ngthumb="housetype4.JPG" data-ngdesc="sdsad">3室2厅2卫</a>
+            <a href="<%=path%>/housetype5.JPG" data-ngthumb="housetype5.JPG" data-ngdesc="sdsad">2室2厅2卫</a>
+            <a href="<%=path%>/housetype6.JPG" data-ngthumb="housetype6.JPG" data-ngdesc="sdsad">2室2厅2卫</a>
+            <a href="<%=path%>/housetype7.JPG" data-ngthumb="housetype7.JPG" data-ngdesc="sdsad">2室2厅2卫</a>
+            <a href="<%=path%>/housetype8.JPG" data-ngthumb="housetype8.JPG" data-ngdesc="sdsad">2室2厅2卫</a>
+        </div>
+    </div>
+</div>
+
+<%--版权--%>
+<%@ include file="../master/foot.jsp" %>
+</body>
+</html>

@@ -1,0 +1,13 @@
+package com.ht.service;
+
+import com.ht.bean.Article;
+import com.ht.common.bean.Pager;
+
+/**
+ * Created by sweet on 2017/8/31.
+ */
+public interface ArticleService extends BaseService<String, Article> {
+
+    Pager<Article> pager(Pager<Article> pager);
+
+}

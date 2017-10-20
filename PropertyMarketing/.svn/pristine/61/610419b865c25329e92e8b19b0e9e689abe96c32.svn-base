@@ -1,0 +1,76 @@
+package com.ht.bean;
+
+import java.util.Date;
+
+/**
+ * Created by sweet on 2017/8/23.
+ */
+public class Appointment {
+
+    private String id;//	varchar(36)	编号,UUID，主键
+    private Date appArriveTime;//	datetime	预约看房时间
+    private Date arriveTime;//	datetime	真实看房时间
+    private String appStatus;//	varchar(20)	预约状态
+    private Date createdTime; //	datetime	创建时间
+    private int status;//	tinyint	状态，激活或冻结
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Date getAppArriveTime() {
+        return appArriveTime;
+    }
+
+    public void setAppArriveTime(Date appArriveTime) {
+        this.appArriveTime = appArriveTime;
+    }
+
+    public Date getArriveTime() {
+        return arriveTime;
+    }
+
+    public void setArriveTime(Date arriveTime) {
+        this.arriveTime = arriveTime;
+    }
+
+    public String getAppStatus() {
+        return appStatus;
+    }
+
+    public void setAppStatus(String appStatus) {
+        this.appStatus = appStatus;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id='" + id + '\'' +
+                ", appArriveTime=" + appArriveTime +
+                ", arriveTime=" + arriveTime +
+                ", appStatus='" + appStatus + '\'' +
+                ", createdTime=" + createdTime +
+                ", status=" + status +
+                '}';
+    }
+}

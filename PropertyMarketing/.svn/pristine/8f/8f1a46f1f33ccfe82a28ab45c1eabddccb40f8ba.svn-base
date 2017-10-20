@@ -1,0 +1,21 @@
+
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/9/7
+  Time: 14:15
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%--版权--%>
+<div class="col-sm-12 col-md-12 col-lg-12 footer">
+    <h2>
+        <a target="_self" href="http://xinfang.date/pages/aboutus.html">关于我们</a>
+        <a target="_self" href="http://xinfang.date/pages/contactus.html">联系我们</a>
+        <a target="_self" href="http://xinfang.date/pages/zhaopinyingcai.html">招聘英才</a>
+        服务热线：1008611
+    </h2>
+    <p>房产网版权所有 &copy;2016-2018 All Rights Reserved 琼ICP备20160109 &nbsp;&nbsp;技术支持: <a style="color: #898989;font-weight: bold" href="http://www.tphouse.net" title="房产网站系统" target="_blank">ZengChuang</a></p>
+</div>
+

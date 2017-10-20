@@ -1,0 +1,72 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 7025
+  Date: 2017/8/26
+  Time: 10:06
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>基本信息</title>
+    <%@include file="../master/style.inc.jsp"%>
+    <link rel="stylesheet" href="<%=path%>/plugins/jquery-validationEngine/validationEngine.jquery.css">
+</head>
+<body>
+<div class="form-group">
+    <div class="col-md-12">
+        <h1 class="margin-bottom-15">基本信息</h1>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-12">
+        <div class="input-group form-group">
+            <div class="templatemo-input-icon-container">
+                <h3 class="margin-bottom-15">名称 : ${sessionScope.agency.name }</h3>
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="templatemo-input-icon-container">
+                <h3 class="margin-bottom-15">负责人 : ${sessionScope.agency.leader }</h3>
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="templatemo-input-icon-container">
+                <h3 class="margin-bottom-15">邮箱 : ${sessionScope.agency.email }</h3>
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="templatemo-input-icon-container">
+                <h3 class="margin-bottom-15">手机号 :${sessionScope.agency.phone }</h3>
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="templatemo-input-icon-container">
+                <h3 class="margin-bottom-15">固定电话 :${sessionScope.agency.tel }</h3>
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="templatemo-input-icon-container">
+                <h3 class="margin-bottom-15">地址 : ${sessionScope.agency.address}</h3>
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="templatemo-input-icon-container">
+                <h3 class="margin-bottom-15"> 简介: ${sessionScope.agency.intro }</h3>
+            </div>
+        </div>
+        <div class="input-group form-group">
+            <div class="templatemo-input-icon-container">
+                <h3 class="margin-bottom-15">创建时间: ${sessionScope.agency.createdTime }</h3>
+            </div>
+        </div>
+    </div>
+    <a href="<%=path %>/agency/updatePage" class="btn btn-primary btn-lg">修改</a>
+</div>
+</body>
+<%@include file="../master/script.inc.jsp"%>
+<script src="<%=path %>/plugins/jquery-validationEngine/jquery.validationEngine.min.js"></script>
+<script src="<%=path %>/plugins/jquery-validationEngine/jquery.validationEngine-zh_CN.js"></script>
+<script src="<%=path %>/js/common/validationEngine.js"></script>
+<script src="<%=path %>/js/agency/agency.js"></script>
+</html>

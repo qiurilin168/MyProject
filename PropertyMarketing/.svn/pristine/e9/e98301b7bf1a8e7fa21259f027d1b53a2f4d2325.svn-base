@@ -1,0 +1,62 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/9/6
+  Time: 20:30
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="shortcut icon" type="image/x-icon" href="<%=path%>/img/Favicon.ico" />
+<div>
+    <ul class="nav nav-tabs  edge">
+        <li ><h6 ><a href="<%=path%>/home/homePager">首页 &nbsp; &nbsp;</a></h6></li>
+        <li><h6><a href="<%=path%>/builds/listPager">&nbsp;&nbsp;楼盘 &nbsp;&nbsp;</a></h6></li>
+        <li><h6><a href="<%=path%>/activity/listPager">&nbsp;&nbsp;热门活动 &nbsp;&nbsp;</a></h6></li>
+        <c:if test="${sessionScope.user.name!=null}">
+            <a class="pull-right " style="margin-top:6px" href="<%=path%>/user/userCenter">${sessionScope.user.name}</a>
+        </c:if>
+        <c:if test="${sessionScope.user.name==null}">
+            <a class="pull-right " style="margin-top:6px" href="<%=path%>/user/userCenter">${sessionScope.user.phone}</a>
+        </c:if>
+        <c:if test="${sessionScope.user==null}">
+            <li class="pull-right ">
+                <div class="dropdown">
+                    <a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        注册
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+                        <li><a href="<%=path%>/agency/regPage">经销商</a></li>
+                        <li><a href="<%=path%>/user/userRegisterPage">用户</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="pull-right ">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        登录
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+                        <li><a href="<%=path%>/agency/loginPage">经销商</a></li>
+                        <li><a href="<%=path%>/user/userLoginPage">用户</a></li>
+                        <li><a href="<%=path%>/employee/employeeLoginPager">员工</a></li>
+                    </ul>
+                </div>
+            </li>
+        </c:if>
+
+    </ul>
+</div>
+<div class="edges">
+        <span class=" logo">
+            <a href="<%=path%>/home/homePager">
+                <img src="<%=path%>/img/LOGO.png" alt="Responsive image">
+            </a>
+        </span>
+    <form class="navbar-form search pull-right">
+        <input type="text" class="form-control" placeholder="请输入您要搜索的关键词">
+        <button type="submit" class="btn">搜索</button>
+    </form>
+</div>

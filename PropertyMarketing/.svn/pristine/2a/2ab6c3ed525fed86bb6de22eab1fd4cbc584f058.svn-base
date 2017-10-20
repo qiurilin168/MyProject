@@ -1,0 +1,16 @@
+package com.ht.dao;
+
+import com.ht.bean.Sale;
+import com.ht.common.bean.Pager;
+
+import java.util.List;
+
+
+public interface SaleDAO extends BaseDAO<String,Sale> {
+
+    Pager<Sale> listByEmployeeId(Pager<Sale> pager,String employeeId);
+
+    public long countByEmployeeId(String employeeId);
+
+    List<Sale> listAllByEmployeeId(String employeeId);
+}

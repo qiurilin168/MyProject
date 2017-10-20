@@ -1,0 +1,108 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/9/4
+  Time: 16:23
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+%>
+<html>
+<head>
+    <title>活动</title>
+    <link rel="stylesheet" href="<%=path%>/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=path%>/css/mains.css">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=path%>/img/Favicon.ico" />
+    <style>
+    </style>
+</head>
+<body>
+<%--首版--%>
+<%--首版--%>
+<div>
+    <ul class="nav nav-tabs  edge">
+        <li ><h6 ><a href="#">首页 &nbsp; &nbsp;</a></h6></li>
+        <li><h6><a href="#">&nbsp;&nbsp;楼盘 &nbsp;&nbsp;</a></h6></li>
+        <li><h6><a href="#">&nbsp;&nbsp;活动 &nbsp;&nbsp;</a></h6></li>
+        <li class="pull-right "><h6><a href="#">&nbsp;&nbsp;注册</a></h6></li>
+        <li class="pull-right"><h6><a href="#">&nbsp;&nbsp;登入 &nbsp;&nbsp;</a></h6></li>
+    </ul>
+</div>
+
+
+<%--搜索框--%>
+<div class="edges">
+        <span class=" logo">
+            <a>
+                <img src="<%=path%>/img/LOGO.png"  alt="Responsive image">
+            </a>
+        </span>
+    <form class="navbar-form search pull-right">
+        <input type="text" class="form-control"placeholder="请输入您要搜索的关键词    ">
+        <button type="submit" class="btn">搜索</button>
+    </form>
+</div>
+
+<%--导航条--%>
+<div class=" navbar-collapse collapse nav navbar-default">
+    <ul class="nav navbar-nav ">
+        <li><a href="#"  class="nav_bg" >&nbsp;首页</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">楼盘</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">楼栋</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">新闻</a></li>
+        <li><a href="<%=path%>#">活动</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">文章</a></li>
+    </ul>
+</div>
+
+<div class="margin">
+    <div class="col-sm-12 col-md-12 col-lg-12 ">
+        <div class="col-sm-12 col-md-12 col-lg-12 ">
+            <div class="col-sm-6 col-md-4 col-lg-3 ">
+                <div class="thumbnail">
+                    <%--<a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/journalism/journalism1.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption lazy">
+                        <a href="http://xinfang.date/loupan_9.html">博鳌美丽熙海岸全款享93折</a>
+                        <p>海口琥珀悠澜在售精装小户型公寓，面积约48㎡开间、59㎡一房户型，
+                            价格约9100元/平，享70年产权，灵动小户型，自住、投资、办公三相宜。...</p>
+                    </div>--%>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-12">
+            <nav aria-label="Page navigation" class="pull-center">
+                <ul class="pagination">
+                    <li><a href="${pageContext.request.contextPath }/activity/listPager?page=${page - 1}&pageSize=8">上一页</a></li>
+                    <li><a href="${pageContext.request.contextPath }/activity/listPager?page=1&pageSize=5">首页</a></li>
+                    <li><a href="${pageContext.request.contextPath }/activity/listPager?page=${totalPage}&pageSize=8">尾页</a></li>
+                    <li><a href="${pageContext.request.contextPath }/activity/listPager?page=${page + 1}&pageSize=8">下一页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<%--版权--%>
+<div class="col-sm-12 col-md-12 col-lg-12 footer ">
+    <h2>
+        <a target="_self" href="http://xinfang.date/pages/aboutus.html">关于我们</a>
+        <a target="_self" href="http://xinfang.date/pages/contactus.html">联系我们</a>
+        <a target="_self" href="http://xinfang.date/pages/zhaopinyingcai.html">招聘英才</a>
+        服务热线：1008611
+    </h2>
+    <p>房产网版权所有 &copy;2016-2018 All Rights Reserved 琼ICP备20160109 &nbsp;&nbsp;技术支持: <a style="color: #898989;font-weight: bold" href="http://www.tphouse.net" title="房产网站系统" target="_blank">ZengChuang</a></p>
+    <p></p>
+</div>
+
+<script src="<%=path%>/plugins/jquery.min.js"></script>
+<script src="<%=path%>/plugins/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

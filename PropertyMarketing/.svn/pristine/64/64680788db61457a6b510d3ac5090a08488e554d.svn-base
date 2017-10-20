@@ -1,0 +1,76 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/9/12
+  Time: 16:51
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% String path = request.getContextPath();%>
+<html>
+<head>
+    <title>员工</title>
+    <link rel="stylesheet" href="<%=path%>/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=path%>/css/mains.css">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=path%>/img/Favicon.ico" />
+</head>
+<body>
+<%--首版和搜索--%>
+<%@ include file="../master/head.jsp" %>
+<div class=" navbar-collapse collapse nav navbar-default">
+    <ul class="nav navbar-nav ">
+        <li><a href="#"  >&nbsp;首页</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">楼盘</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">楼栋</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">新闻</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">活动</a></li>
+        <li><a href="<%=path%>#" class="nav_bg">文章</a></li>
+    </ul>
+</div>
+
+<div class="margin">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="buy_tab ">
+            <span>销售员</span>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <c:forEach var="employee" items="${requestScope.employees}" >
+                    <div class="col-sm-6 col-md-4 col-lg-2 ">
+                        <div><%--头像推荐使用510*510像素的头像--%>
+                            <img  src="<%=path%>/img/portrait/tx1.jpg" alt="Bootstrap 编码规范" class="img-circle" height="140px">
+                                <%--<input type="radio" name="sex">--%>
+                            <p class="text-center">${employee.name}</p>
+                            <p class="text-center"><span class="">电话<span>${employee.phone}</span></span></p>
+                            <p class="text-center"><button type="button" class="btn btn-default">选择</button></p>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 ">
+        <form class="navbar-form search">
+            <input type="text" class="form-control "placeholder="请选择你需要的户型">
+            <button type="submit" class="btn">搜索</button>
+        </form>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 ">
+        <form class="navbar-form search">
+            <input type="text" class="form-control "placeholder="预约">
+            <button type="submit" class="btn">预约时间</button>
+        </form>
+    </div>
+    <div class="text-center">
+    <button type="button" class="btn btn-info ">&nbsp;&nbsp;预约&nbsp;&nbsp;</button>
+    </div>
+</div>
+
+<%--版权--%>
+<%@ include file="../master/foot.jsp" %>
+<script src="<%=path%>/plugins/jquery.min.js"></script>
+<script src="<%=path%>/plugins/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

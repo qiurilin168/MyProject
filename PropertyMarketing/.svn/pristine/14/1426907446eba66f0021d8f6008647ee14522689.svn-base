@@ -1,0 +1,113 @@
+/**
+ * 留言
+ */
+function message() {
+    var userId = $("#userId").val();
+    var buildsId = $("#buildsId").val();
+    var agencyId = $("#agencyId").val();
+    var content = $("#message");
+    if(userId === null || userId === '') {
+        swal("请先登录用户账号！","","warning");
+    } else {
+        $.post(contextPath + "/message/add",
+            {"buildsId": buildsId,"agencyId": agencyId,"message.content":content.val()},
+            function (data) {
+                if (data.controllerResult.result === 'success') {
+                    swal("留言成功","","success");
+                    content.val("");
+                } else {
+                    swal(data.controllerResult.message, "", "error");
+                }
+            }, "json"
+        );
+    }
+}
+
+/**
+ * 评论
+ */
+function comment() {
+    var userId = $("#userId").val();
+    var buildsId = $("#buildsId").val();
+    var agencyId = $("#agencyId").val();
+    var content = $("#comment");
+    if(userId === null || userId === '') {
+        swal("请先登录用户账号！","","warning");
+    } else {
+        $.post(contextPath + "/comment/add",
+            {"buildsId": buildsId,"agencyId": agencyId,"comment.content":content.val()},
+            function (data) {
+                if (data.controllerResult.result === 'success') {
+                    swal("评价成功","","success");
+                    content.val("");
+                } else {
+                    swal(data.controllerResult.message, "", "error");
+                }
+            }, "json"
+        );
+    }
+}
+
+/**
+ * 点赞
+ */
+function like() {
+    var userId = $("#userId").val();
+    var buildsId = $("#buildsId").val();
+    if(userId === null || userId === '') {
+        swal("请先登录用户账号！","","warning");
+    } else {
+        $.post(contextPath + "/like/addOrDel",
+            {"buildsId": buildsId},
+            function (data) {
+                if (data.controllerResult.result === 'success') {
+                    if(data.controllerResult.message === '取消成功') {
+                        $(".click").attr("src","<%=path %>/img/unclick.svg");
+                    } else {
+                        $(".click").attr("src","<%=path %>/img/clicked.svg");
+                    }
+                } else {
+                    swal(data.controllerResult.message, "", "error");
+                }
+            }, "json"
+        );
+    }
+}
+
+function appointment() {
+    var userId = $("#userId").val();
+    var buildsId = $("#buildsId").val();
+    if(userId === null || userId ==''){
+        swal("请先登录用户账号！","","warning");
+    }else{
+        window.location = "/appointment/appointmentByEmployee?buildsId="+buildsId;
+    }
+}
+
+function delAppointment() {
+    var appointmentId = $("#appointmentId").val();
+    swal({
+            title: "你要取消预约吗？",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "是的",
+            cancelButtonText:"点错了",
+            closeOnConfirm: false
+        },
+        function(){
+            $.post(contextPath + "/appointment/delAppointment",
+                {"appointmentId": appointmentId},
+                function (data) {
+                    if (data.controllerResult.result === 'success') {
+                        $("#delAppButton").hide();
+                        $("#appButton").show();
+                        swal("您已取消预约","","success");
+                    } else {
+                        swal(data.controllerResult.message, "", "error");
+                    }
+                }, "json"
+            )
+        });
+}

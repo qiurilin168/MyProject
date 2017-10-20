@@ -1,0 +1,22 @@
+package com.ht.controller;
+
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * Created by sweet on 2017/9/6.
+ */
+public class HomeController extends ActionSupport implements ServletRequestAware {
+
+
+    public String homePager() {
+        return "homePager";
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest httpServletRequest) {
+
+    }
+}

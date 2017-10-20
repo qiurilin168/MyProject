@@ -1,0 +1,10 @@
+package com.ht.dao;
+
+import com.ht.bean.Article;
+
+/**
+ * Created by sweet on 2017/8/31.
+ */
+public interface ArticleDAO extends BaseDAO<String, Article> {
+
+}

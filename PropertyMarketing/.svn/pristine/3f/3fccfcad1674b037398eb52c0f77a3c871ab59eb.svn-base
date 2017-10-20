@@ -1,0 +1,10 @@
+package com.ht.service;
+
+import com.ht.bean.Ads;
+
+/**
+ * Created by sweet on 2017/9/4.
+ */
+public interface AdsService extends BaseService<String, Ads> {
+
+}

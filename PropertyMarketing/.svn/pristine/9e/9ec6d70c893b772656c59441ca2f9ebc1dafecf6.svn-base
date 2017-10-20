@@ -1,0 +1,58 @@
+<%--
+  Created by IntelliJ IDEA.
+  employee: qiu
+  Date: 2017/8/26
+  Time: 11:07
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>修改密码</title>
+    <%@include file="../master/style.inc.jsp"%>
+    <link rel="stylesheet" href="<%=path%>/plugins/sweet-alert/sweet-alert.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12" >
+                <form id="changePwd">
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control " id="id" name="id"  value="${sessionScope.employee.id}"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control " id="beforePwd" name="beforePwd" placeholder="请输入原密码" data-errormessage-value-missing="请输入手机号或邮箱" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control " id="newPwd"  name="newPwd" placeholder="请输入新密码" data-errormessage-value-missing="请输入密码"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control " id="confirmPwd"  name="confirmPwd" placeholder="请再次输入新密码" data-errormessage-value-missing="请输入密码"/>
+                        </div>
+                    <a class="btn btn-primary col-xs-12 col-sm-12 col-md-12 col-lg-12" href="javascript:void(0);" onclick="changePwd();">修改</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%@include file="../master/script.inc.jsp"%>
+    <script src="<%=path%>/plugins/sweet-alert/sweet-alert.min.js"></script>
+    <script>
+       function changePwd() {
+           $.post("/employee/updateEmpPwd",
+               $("#changePwd").serialize(),
+               function(data) {
+                   if(data.controllerResult.result == 'success') {
+                       swal(data.controllerResult.message);
+                        /*document.getElementById("beforePwd").innerHTML = "";
+                        document.getElementById("newPwd").innerHTML = "";
+                        document.getElementById("confirmPwd").innerHTML = "";*/
+                   }else{
+                       swal(data.controllerResult.message);
+                   }
+               },"json"
+           );
+       }
+    </script>
+</body>
+</html>

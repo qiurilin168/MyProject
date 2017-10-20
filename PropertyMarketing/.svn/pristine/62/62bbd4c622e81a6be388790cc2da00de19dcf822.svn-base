@@ -1,0 +1,20 @@
+package com.ht.service;
+
+import com.ht.bean.Sale;
+import com.ht.common.bean.Pager;
+
+import java.util.List;
+
+
+public interface SaleService extends BaseService<String,Sale> {
+
+    Pager<Sale> listByEmployeeId(Pager<Sale> pager,String employeeId);
+
+    long countByEmployeeId(String employeeId);
+
+    long countByEmployeeIdAndMonth(String employeeId,int month);
+
+    List<Sale> listAllByEmployeeId(String employeeId);
+
+    List<Sale> listByEmployeeIdAndMonth(String employeeId,int month);
+}

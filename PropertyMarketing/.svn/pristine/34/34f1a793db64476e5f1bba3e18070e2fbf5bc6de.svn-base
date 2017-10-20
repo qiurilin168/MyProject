@@ -1,0 +1,9 @@
+package com.ht.dao;
+
+import com.ht.bean.Appointment;
+import com.ht.common.bean.Pager;
+
+public interface AppointmentDAO extends BaseDAO<String,Appointment> {
+
+    Pager listByEmployeeId(Pager<Appointment> pager, String employeeId);
+}

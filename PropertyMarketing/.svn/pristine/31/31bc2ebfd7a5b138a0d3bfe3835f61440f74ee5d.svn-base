@@ -1,0 +1,52 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 7025
+  Date: 2017/8/25
+  Time: 15:05
+  To change this template use File | Settings | File Templates.
+--%>
+<link type="text/css" href="<%=path %>/plugins/header/format_dom.css" rel="stylesheet"/>
+<link type="text/css" href="<%=path %>/plugins/header/main.css" rel="stylesheet"/>
+<script type="text/javascript">DD_belatedPNG.fix("*")</script>
+<div>
+    <div class="top_line">
+    </div>
+    <div class="top_m clearfix">
+        <span class="logo"><a title="房产网" href="<%=path %>/"><img alt="房产网" src="<%=path %>/img/LOGO.png"/></a></span>
+        <div class="search clearfix">
+            <div class="s_map">
+            </div>
+            <div class="float_l">
+                <div class="search01" id="top_search">
+                </div>
+                <div class="search02">
+                    <form method="get" action="" id="top_search_form">
+                        <p>
+                            <input type="text" class="s_inp01" autocomplete="off" name="keyword" id="search_key" placeholder="                            <input type="text" class="s_inp01" autocomplete="off" name="keyword" id="search_key" placeholder=""/>
+                            "/>
+                            <a href="javascript:void(0);" id="search_but" class="but01">搜索</a>
+                        </p>
+                    </form>
+                    <div class="auto-complate">
+                        <ul id="search-auto"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <h2><span class="tel">登录</span>
+            <span class="tel">注册</span>
+            <ul>
+                <li><a href="http://xinfang.date/" title="首页" target="_self" class="nav_bg">首页</a></li>
+                <li><a href="http://xinfang.date/loupan.html" title="新房" target="_self">新房</a></li>
+                <li><a href="http://xinfang.date/chuzu.html" title="出租房" target="_self">出租房</a></li>
+                <li><a href="http://xinfang.date/xiaoqu.html" title="小区" target="_self">小区</a></li>
+                <li><a href="http://xinfang.date/tuangou.html" title="团购" target="_self">团购</a></li>
+                <li><a href="http://xinfang.date/huodong.html" title="活动" target="_self">活动</a></li>
+                <li><a href="http://xinfang.date/question.html" title="问答" target="_self">问答</a></li>
+                <li><a href="http://xinfang.date/news.html" title="资讯" target="_self">资讯</a></li>
+            </ul>
+        </h2>
+    </div>
+</div>

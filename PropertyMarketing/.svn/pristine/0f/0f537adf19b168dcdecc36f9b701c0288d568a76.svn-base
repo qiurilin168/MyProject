@@ -1,0 +1,13 @@
+package com.ht.service;
+
+import com.ht.bean.Appointment;
+import com.ht.common.bean.Pager;
+
+public interface AppointmentService extends BaseService<String,Appointment>{
+
+    Pager listByEmployeeId(Pager<Appointment> pager,String employeeId);
+
+    Pager listByAgencyId(Pager<Appointment> pager,String agencyId);
+
+    Appointment getByUserAndBuildings(String userId,String buildingsId);
+}

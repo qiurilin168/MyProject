@@ -1,0 +1,470 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/8/30
+  Time: 20:17
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+%>
+<html>
+<head>
+    <title>首页</title>
+    <link rel="stylesheet" href="<%=path%>/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=path%>/css/mains.css">
+    <style>
+        #circleContent{
+            width:100%;
+            height:313px;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+    <%@ include file="../master/head.jsp"%>
+
+    <%--导航条--%>
+    <div class=" navbar-collapse collapse nav navbar-default">
+        <ul class="nav navbar-nav ">
+            <li><a href="<%=path%>/home/homePager"  class="nav_bg" >&nbsp;首页</a></li>
+            <li><a href="<%=path%>/builds/listPager">楼盘</a></li>
+            <li><a href="<%=path%>/build/frontList" class="nav_bg">楼栋</a></li>
+            <li><a href="<%=path%>#" class="nav_bg">新闻</a></li>
+            <li><a href="<%=path%>/activity/listPager"  class="nav_bg">活动</a></li>
+            <li><a href="<%=path%>/article/listPager" class="nav_bg">文章</a></li>
+        </ul>
+    </div>
+
+        <%--轮播图--%>
+    <div id="circleContent" class="carousel slide">
+        <ol class="carousel-indicators">
+            <li data-target="#circleContent" data-slide-to="0" class="active"></li>
+            <li data-target="#circleContent" data-slide-to="1"></li>
+            <li data-target="#circleContent" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href="<%=path%>#">
+                <img src="<%=path%>/img/carousel/luenb1.jpg" >
+                    <div class="carousel-caption">王伟伟</div></a>
+            </div>
+            <div class="item">
+                <a href="<%=path%>#">
+                <img src="<%=path%>/img/carousel/luenb2.jpg" >
+                    <div class="carousel-caption">王伟伟</div></a>
+            </div>
+            <div class="item">
+                <a href="<%=path%>#">
+                <img src="<%=path%>/img/carousel/luenb4.jpg" >
+                <div class="carousel-caption">王伟伟</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+        <%--值得买--%>
+    <div class="margin">
+        <div class="col-sm-12 col-md-12 col-lg-12 ">
+            <div class="buy_tab ">
+                <span>值得买</span>
+                <a class="pull-right" href="<%=path%>#" >更多</a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 ">
+                <div class="thumbnail" >
+                    <a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption">
+                        <a href="#">富力谷</a>
+                        <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2 ">
+                <div class="thumbnail">
+                    <a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption">
+                        <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                        <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2 ">
+                <div class="thumbnail">
+                    <a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/building/lcon2.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption">
+                        <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                        <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2 ">
+                <div class="thumbnail">
+                    <a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/building/lcon3.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption">
+                        <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                        <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2 ">
+                <div class="thumbnail">
+                    <a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/building/lcon4.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption">
+                        <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                        <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2 ">
+                <div class="thumbnail">
+                    <a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/building/lcon5.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption">
+                        <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                        <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2 ">
+                <div class="thumbnail">
+                    <a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/building/lcon6.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption">
+                        <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                        <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2 ">
+                <div class="thumbnail">
+                    <a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/building/lcon7.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption">
+                        <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                        <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-2 ">
+                <div class="thumbnail">
+                    <a href="<%=path%>#" >
+                        <img  src="<%=path%>/img/building/lcon8.jpg" alt="Bootstrap 编码规范">
+                    </a>
+                    <div class="caption">
+                        <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                        <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <%--活动--%>
+    <div class="margin">
+        <div class="col-sm-12 col-md-12 col-lg-12 ">
+            <div class="buy_tab ">
+                <span >活动</span>
+                <a class="pull-right" href="<%=path%>#" >更多</a>
+            </div>
+            <div class="col-sm-6 col-md-8 col-lg-9">
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>#" >
+                            <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>#" >
+                            <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>#" >
+                            <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>#" >
+                            <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>#" >
+                            <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>#" >
+                            <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>#" >
+                            <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>#" >
+                            <img  src="<%=path%>/img/building/lcon1.jpg" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 first ">
+                <div class="buy_tab1 ">
+                    <span>活动专栏</span>
+                    <a class="pull-right more" href="<%=path%>#" >更多</a>
+                </div>
+                <ul>
+                    <li class="list-unstyled">
+                        <h5><a class="text-center" href="http://xinfang.date/loupan_9.html"><strong>琥珀悠澜小户型公寓仅售9100元/平</strong></a></h5>
+                    </li>
+                    <li><h5><a href="<%=path%>#">博鳌美丽熙海岸全款享93折</a></h5></li>
+                    <li><h5><a href="<%=path%>#">后海温泉小镇推出特惠</a></h5></li>
+                    <li><h5><a href="<%=path%>#">阳光城购房均价低至6800元/平</a></h5></li>
+                    <li><h5><a href="<%=path%>#">春阳江城国际 全款享95折优惠</a></h5></li>
+                    <li><h5><a href="<%=path%>#">中视金海湾全款享9折优惠</a></h5></li>
+                </ul>
+                <div class="f_img"><%--title='' target='_blank' 点击时开启新页面--%>
+                    <a href="<%=path%>#" ><img alt='' src='<%=path%>/picture/lazy1.jpg' width='100%'  /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <%--户型--%>
+    <div class="margin">
+        <div class="col-sm-12 col-md-12 col-lg-12 ">
+            <div class="buy_tab">
+                <span>户型</span>
+                <a class="pull-right" href="<%=path%>/#" >更多</a>
+            </div>
+            <div class="col-sm-6 col-md-8 col-lg-9">
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>/#" >
+                            <img  src="<%=path%>/img/type/housetype1.JPG" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>/#" >
+                            <img  src="<%=path%>/img/type/housetype1.JPG" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>/#" >
+                            <img  src="<%=path%>/img/type/housetype1.JPG" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>/#" >
+                            <img  src="<%=path%>/img/type/housetype1.JPG" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>/#" >
+                            <img  src="<%=path%>/img/type/housetype1.JPG" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>/#" >
+                            <img  src="<%=path%>/img/type/housetype1.JPG" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>/#" >
+                            <img  src="<%=path%>/img/type/housetype1.JPG" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="thumbnail">
+                        <a href="<%=path%>/#" >
+                            <img  src="<%=path%>/img/type/housetype1.JPG" alt="Bootstrap 编码规范">
+                        </a>
+                        <div class="caption">
+                            <a target="_blank" href="http://xinfang.date/loupan_9.html">富力谷</a>
+                            <div class="pull-right text1"><span > &yen;9999元/平米</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 first2 ">
+                <div class="buy_tab1 ">
+                    <span>推荐户型</span>
+                    <a class="pull-right more" href="<%=path%>/login.jsp" >更多</a>
+                </div>
+                <ul>
+                    <li class="list-unstyled">
+                        <span class="news">
+                            <a><img src="<%=path%>/img/type/housetype1.JPG" width="120px;" height="85px;"></a>
+                        </span>
+                        <h4><a href="<%=path%>#">经典户型</a></h4>
+                        <p>海南海口</p>
+                    </li>
+                    <li class="list-unstyled">
+                        <span class="news">
+                            <a><img src="<%=path%>/img/type/housetype1.JPG" width="120px;" height="85px;"></a>
+                        </span>
+                        <h4><a href="<%=path%>#">经典户型</a></h4>
+                        <p>望湖嘉苑住宅小区</p>
+                    </li>
+                    <li class="list-unstyled">
+                         <span class="news">
+                            <a><img src="<%=path%>/img/type/housetype1.JPG" width="120px;" height="85px;"></a>
+                        </span>
+                        <h4><a href="<%=path%>#">经典户型</a></h4>
+                        <p>新城小区</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+     <%--广告位 新闻 文章--%>
+    <div class="margin">
+        <div class="col-sm-12 col-md-12 col-lg-12 ">
+            <div class="col-sm-12 col-md-4 col-lg-4 ">
+                    <a>广告位</a>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 index_box">
+                <div class="buy_tab">
+                    <span>关注焦点</span>
+                    <a class="pull-right" href="<%=path%>#" >更多</a>
+                </div>
+                <ul class="tlist">
+                    <li><a href="<%=path%>#"><strong class="blank">司法部公布“五不准” 赣州炒房行为“雪上加霜”</strong></a></li>
+                    <li><h5><a href="<%=path%>#">朝阳区王某花媳妇儿本买房...</a></h5></li>
+                    <li><h5><a href="<%=path%>#">毅德王伟伟再兴：将把国内养猪总部搬回赣州</a></h5></li>
+                    <li><h5><a href="<%=path%>#">章江新区K13地块返迁房项目三栋楼喜迎封顶</a></h5></li>
+                    <li><h5><a href="<%=path%>#">沙石片区利好，投资1.5亿进行生态保护修复</a></h5></li>
+                </ul>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 index_box">
+                <div class="buy_tab">
+                    <span>文章</span>
+                    <a class="pull-right" href="<%=path%>#" >更多</a>
+                </div>
+                <ul class="tlist">
+                    <li><a href="<%=path%>#"><strong class="blank">司法部公布“五不准” 赣州炒房行为“雪上加霜”</strong></a></li>
+                    <li><h5><a href="<%=path%>#">朝阳区王某花媳妇儿本买房...</a></h5></li>
+                    <li><h5><a href="<%=path%>#">毅德王伟伟再兴：将把国内养猪总部搬回赣州</a></h5></li>
+                    <li><h5><a href="<%=path%>#">章江新区K13地块返迁房项目三栋楼喜迎封顶</a></h5></li>
+                    <li><h5><a href="<%=path%>#">沙石片区利好，投资1.5亿进行生态保护修复</a></h5></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+        <%@ include file="../master/foot.jsp"%>
+</div>
+<script src="<%=path%>/plugins/jquery.min.js"></script>
+<script src="<%=path%>/plugins/bootstrap/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#circleContent').carousel({interval:3000});//每隔3秒自动轮播
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+/*function empPwd(){
+    $.post("/employee/updateEmpPwd",
+        $("#updateEmpPwd").serialize(),
+        function(data){
+            if (data.controllerResult.result == 'fail') {
+                $("#empPwd").text(data.controllerResult.message);
+            }else if(data.controllerResult.result == 'success'){
+                swal("修改成功！");
+                alert("修改成功");
+                window.location("/employee/toUpdatePwdPage");
+            }
+        },
+        "json"
+    )
+}*/
+
+function empPwd() {
+    validate('#changePwd');
+    if($('#changePwd').validationEngine('validate')) {
+        $.post("/employee/updateEmpPwd",
+            $("#updateEmpPwd").serialize(),
+            function (data) {
+                if (data.controllerResult.result == 'success') {
+                    swal(data.controllerResult.message);
+                    $(":text").val("");
+                    //window.location = "/user/userMessage"
+
+                } else {
+                    swal("修改失败");
+                }
+            }, "json"
+        );
+    }
+}

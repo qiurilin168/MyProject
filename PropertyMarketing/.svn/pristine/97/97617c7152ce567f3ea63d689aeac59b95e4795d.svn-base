@@ -1,0 +1,13 @@
+package com.ht.service;
+
+import com.ht.bean.User;
+
+public interface UserService extends BaseService<String,User>{
+    boolean getPhone(String phone);
+
+    boolean getEmail(String email);
+
+    User getByPhonePwd(String phone, String pwd);
+
+    User getByEmailPwd(String email, String pwd);
+}

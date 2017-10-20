@@ -1,0 +1,9 @@
+package com.ht.service;
+
+import com.ht.bean.Article;
+
+/**
+ * Created by sweet on 2017/8/31.
+ */
+public interface ArticleService extends BaseService<String, Article> {
+}

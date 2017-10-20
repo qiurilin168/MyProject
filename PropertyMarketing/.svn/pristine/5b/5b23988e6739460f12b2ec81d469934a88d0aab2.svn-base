@@ -1,0 +1,20 @@
+package com.ht.dao;
+
+import com.ht.bean.Employee;
+import com.ht.dao.BaseDAO;
+
+import java.util.List;
+
+/**
+ * Created by sweet on 2017/8/25.
+ */
+public interface EmployeeDAO extends BaseDAO<String, Employee> {
+
+
+    Employee getByPhonePwd(String phone, String pwd);
+
+    Employee getByEmailPwd(String email, String pwd);
+
+    List<Employee> listByAgeencyId(String agency_id);
+
+}

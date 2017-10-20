@@ -1,0 +1,18 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 7025
+  Date: 2017/8/26
+  Time: 8:25
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>等待审核</title>
+    <%@include file="../master/style.inc.jsp"%>
+</head>
+<body>
+    正在审核中。。。请耐心等待
+</body>
+<%@include file="../master/script.inc.jsp"%>
+</html>

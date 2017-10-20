@@ -1,0 +1,13 @@
+package com.ht.dao;
+
+import com.ht.bean.Article;
+import com.ht.common.bean.Pager;
+
+/**
+ * Created by sweet on 2017/8/31.
+ */
+public interface ArticleDAO extends BaseDAO<String, Article> {
+
+    Pager<Article> pager(Pager<Article> pager);
+
+}

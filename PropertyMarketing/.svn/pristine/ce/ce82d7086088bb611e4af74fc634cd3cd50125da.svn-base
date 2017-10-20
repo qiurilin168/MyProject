@@ -1,0 +1,269 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: qiu
+  Date: 2017/8/26
+  Time: 8:48
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<html>
+<head>
+    <title>Title</title>
+    <%@include file="../master/style.inc.jsp"%>
+    <link rel="stylesheet" src="<%=path%>/plugins/layDate/laydate.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>基本信息</h1>
+            <table class="table table-hover">
+
+                <tbody>
+                    <tr>
+                        <th>邮箱</th>
+                        <th>${sessionScope.user.email}</th>
+                    </tr>
+                    <tr>
+                        <th>电话</th>
+                        <th>${sessionScope.user.phone}</th>
+                    </tr>
+                    <tr>
+                        <th>真实姓名</th>
+                        <th>${sessionScope.user.name}</th>
+                    </tr>
+                    <tr>
+                        <th>昵称</th>
+                        <th>${sessionScope.user.nickname}</th>
+                    </tr>
+                    <tr>
+                        <th>qq</th>
+                        <th>${sessionScope.user.qq}</th>
+                    </tr>
+                    <tr>
+                        <th>微信</th>
+                        <th>${sessionScope.user.wechat}</th>
+                    </tr>
+
+                    <tr>
+                        <th>性别</th>
+                        <th>${sessionScope.user.gender}</th>
+                    </tr>
+                    <tr>
+                        <th>生日</th>
+                        <th>
+                            <fmt:formatDate value="${sessionScope.user.birthday}" pattern="yyyy/MM/dd" var="d" />
+                            ${d}
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary " data-toggle="modal" <%--onclick="changeWin()"--%>  data-target="#myModal">
+       修改信息
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+                </div>
+                <div class="modal-body">
+                   <form id="changMessage">
+                       <div class="form-group">
+                           <input type="hidden" class="form-control " id="id"  name="user.id"  value="${sessionScope.user.id}" />
+                       </div>
+                       <table class="table table-hover">
+
+                           <tbody>
+                           <tr>
+                               <th>邮箱</th>
+                               <th>
+                                   <div class="form-group">
+                                       <input type="email" class="form-control " id="email"  name="user.email"  value="${sessionScope.user.email}" disabled/>
+                                   </div>
+                               </th>
+                           </tr>
+                           <tr>
+                               <th>真实姓名</th>
+                               <th>
+                                   <c:choose>
+                                       <c:when test="${sessionScope.user.name ==null || sessionScope.user.name ==''}">
+                                           <div class="form-group">
+                                               <input type="text" class="form-control " id="name"  name="user.name"  value="${sessionScope.user.name}" />
+                                           </div>
+                                       </c:when>
+                                       <c:otherwise>
+                                           <div class="form-group">
+                                               <input type="text" class="form-control " id="name1"  name="user.name"  value="${sessionScope.user.name}" disabled/>
+                                           </div>
+                                       </c:otherwise>
+                                   </c:choose>
+                               </th>
+
+                           </tr>
+                           <tr>
+                               <th>电话</th>
+                               <th>
+                                   <div class="form-group">
+                                       <input type="text" class="form-control " id="phone"  name="user.phone"  value="${sessionScope.user.phone}" />
+                                   </div>
+                               </th>
+                           </tr>
+                           <tr>
+                               <th>昵称</th>
+                               <th>
+                                   <div class="form-group">
+                                       <input type="text" class="form-control " id="nickname"  name="user.nickname"  value="${sessionScope.user.nickname}" />
+                                   </div>
+                               </th>
+                           </tr>
+                           <tr>
+                               <th>qq</th>
+                               <th>
+                                   <div class="form-group">
+                                       <input type="text" class="form-control " id="qq"  name="user.qq"  value="${sessionScope.user.qq}" />
+                                   </div>
+                               </th>
+                           </tr>
+                           <tr>
+                               <th>微信</th>
+                               <th>
+                                   <div class="form-group">
+                                       <input type="text" class="form-control " id="wechat"  name="user.wechat"  value="${sessionScope.user.wechat}" />
+                                   </div>
+                               </th>
+                           </tr>
+
+                           <tr>
+                               <th>性别</th>
+                               <th>
+
+
+                                   <c:choose>
+                                       <c:when test="${sessionScope.user.gender=='男'}" >
+                                           <label class="radio-inline">
+                                               <input type="radio" name="user.gender" id="inlineRadio1" value="男"  checked> 男
+                                           </label>
+                                           <label class="radio-inline">
+                                               <input type="radio" name="user.gender" id="inlineRadio2" value="女"> 女
+                                           </label>
+                                       </c:when>
+                                       <c:when test="${sessionScope.user.gender=='女'}">
+                                           <label class="radio-inline">
+                                               <input type="radio" name="user.gender" id="inlineRadio3" value="男"  > 男
+                                           </label>
+                                           <label class="radio-inline">
+                                               <input type="radio" name="user.gender" id="inlineRadio4" value="女" checked> 女
+                                           </label>
+                                        </c:when>
+                                       <c:otherwise>
+                                           <label class="radio-inline">
+                                               <input type="radio" name="user.gender" id="inlineRadio5" value="男"  > 男
+                                           </label>
+                                           <label class="radio-inline">
+                                               <input type="radio" name="user.gender" id="inlineRadio6" value="女" > 女
+                                           </label>
+                                       </c:otherwise>
+                                   </c:choose>
+
+
+                               </th>
+                           </tr>
+                           <tr>
+                               <th>生日</th>
+                               <th>
+                                   <div class="form-group">
+                                       <fmt:formatDate value="${sessionScope.user.birthday}" pattern="yyyy-MM-dd" var="d" />
+                                       <input type="text" class="form-control " id="birthday"  name="user.birthday"  value="${d}"/>
+                                   </div>
+                               </th>
+                           </tr>
+                           </tbody>
+                       </table>
+                   </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <a type="button" class="btn btn-default" data-dismiss="modal" href="javascript:void(0);" onclick="changMessage()">保存</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%@include file="../master/script.inc.jsp"%>
+<script src="<%=path%>/plugins/layDate/laydate.js"></script>
+<script>
+
+
+    var nowDate = new Date();
+    var dateStr = nowDate.getFullYear() + '-' + (nowDate.getMonth()+1) + '-' + nowDate.getDate();
+    var ins22 = laydate.render({
+        elem: '#birthday'
+        ,type: 'date'
+        , max: dateStr
+        ,ready: function(){
+
+        }
+    });
+
+//    function changeWin(userId,userName,) {
+//
+//        $("#myModal").modal();
+//    }
+
+
+
+    function changMessage() {
+        $.post("/user/userChangeMessage",
+            $("#changMessage").serialize(),
+            function(data) {
+               if(data.controllerResult.result == 'success') {
+                    swal(data.controllerResult.message);
+                    window.location = "/user/userMessage"
+                }else{
+                    swal(data.controllerResult.message);
+                }
+            },"json"
+        );
+    }
+
+        function formatDate(value) {
+            if (value == undefined || value == null || value == '') {
+                return "";
+            } else {
+                var date = new Date(value);
+                var year = date.getFullYear().toString();
+                var month = (date.getMonth() + 1);
+                var day = date.getDate().toString();
+                var hour = date.getHours().toString();
+                var minutes = date.getMinutes().toString();
+                var seconds = date.getSeconds().toString();
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                if (day < 10) {
+                    day = "0" + day;
+                }
+                if (hour < 10) {
+                    hour = "0" + hour;
+                }
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
+                return year + "-" + month + "-" + day;
+            }
+        }
+    </script>
+</body>
+</html>
