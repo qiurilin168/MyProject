@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.NoticeDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Notice" >
+    <id column="nid" property="nid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.we.bean.Notice" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    nid, title, date
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="getById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from notice
+    where nid = #{nid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from notice
+    where nid = #{nid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Notice" >
+    insert into notice (nid, title, date, 
+      content)
+    values (#{nid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Notice" >
+    insert into notice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nid != null" >
+        nid,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nid != null" >
+        #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Notice" >
+    update notice
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where nid = #{nid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.we.bean.Notice" >
+    update notice
+    set title = #{title,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where nid = #{nid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Notice" >
+    update notice
+    set title = #{title,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where nid = #{nid,jdbcType=INTEGER}
+  </update>
+
+  <select id="countAllNotice" resultType="java.lang.Long">
+    <![CDATA[
+	  select count(nid) from notice
+    ]]>
+  </select>
+
+  <select id="listAllNotice" resultType="com.we.bean.Notice">
+    <![CDATA[
+      select * from notice
+      order by nid desc
+      limit #{pager.offset} ,#{pager.limit}
+    ]]>
+  </select>
+
+  <select id="listCriteria" resultType="com.we.vo.UserLetterVO">
+    SELECT
+    ul.luid AS 'id', ul.state, n.content, n.title, n.date
+    FROM notice n,user_letter ul, user u
+    WHERE
+    u.uid = ul.uid
+    AND ul.lid = n.nid
+    AND ul.state != 0
+    <if test="query != null">
+      AND ul.uid = #{query.uid}
+    </if>
+    ORDER BY ul.state DESC, n.date DESC
+    LIMIT #{pager.offset},#{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    SELECT
+    count(ul.luid)
+    FROM notice n,user_letter ul, user u
+    WHERE
+    u.uid = ul.uid
+    AND ul.lid = n.nid
+    AND ul.state != 0
+    <if test="query != null">
+      AND ul.uid = #{query.uid}
+    </if>
+  </select>
+
+  <select id="listAllPageNotice" resultType="com.we.bean.Notice">
+    <![CDATA[
+    SELECT
+    * FROM notice n
+    ORDER BY n.nid
+    limit #{pager.offset} ,#{pager.limit}
+    ]]>
+  </select>
+
+  <select id="countAllPagerNotice" resultType="java.lang.Long">
+      <![CDATA[
+	  select count(nid) from notice
+    ]]>
+  </select>
+
+  <select id="listQueryAllNotice" resultType="com.we.bean.Notice">
+    <![CDATA[
+        SELECT
+        n.nid, n."date",n.title
+        FROM notice n
+        ORDER BY n.nid
+    ]]>
+  </select>
+
+  <select id="listNotice" resultType="com.we.vo.NoticeVO">
+    <![CDATA[
+        SELECT n.date,n.nid,n.title FROM notice n
+        limit 0,4
+    ]]>
+  </select>
+
+  <select id="pageNotice" resultType="com.we.vo.NoticeVO">
+    <![CDATA[
+      SELECT n.nid,n.title,n.date FROM notice n
+      ORDER BY n.date DESC limit #{pager.beginIndex} ,#{pager.pageSize}
+    ]]>
+  </select>
+
+</mapper>

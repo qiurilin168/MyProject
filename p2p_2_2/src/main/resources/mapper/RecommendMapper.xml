@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.RecommendDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Recommend" >
+    <id column="rid" property="rid" jdbcType="INTEGER" />
+    <result column="tid" property="tid" jdbcType="INTEGER" />
+    <result column="tname" property="tname" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="rname" property="rname" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rid, tid, tname, uid, rname, date
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from recommend
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from recommend
+    where rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Recommend" >
+    insert into recommend (rid, tid, tname, 
+      uid, rname, date)
+    values (#{rid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{tname,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Recommend" >
+    insert into recommend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="tname != null" >
+        tname,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="rname != null" >
+        rname,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="tname != null" >
+        #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="rname != null" >
+        #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Recommend" >
+    update recommend
+    <set >
+      <if test="tid != null" >
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="tname != null" >
+        tname = #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="rname != null" >
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Recommend" >
+    update recommend
+    set tid = #{tid,jdbcType=INTEGER},
+      tname = #{tname,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      rname = #{rname,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+
+  <sql id="queryDate">
+    <if test="query != null and query.startTime != null">
+      and `date` <![CDATA[>=]]> #{query.startTime}
+    </if>
+    <if test="query != null and query.endTime != null ">
+      and `date` <![CDATA[<=]]> #{query.endTime}
+    </if>
+  </sql>
+
+  <select id="listCriteria" resultType="com.we.bean.Recommend">
+      select r.rid ,r.tid,r.uid,r.date as `date`,u.rname as tname,us.rname as rname from recommend r, `user` u ,`user` us
+      WHERE 1=1 and r.tid = u.uid and r.uid = us.uid
+      <include refid="queryDate"/>
+      order by `date` desc limit #{pager.offset} ,#{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long" parameterType="com.we.query.RecommendQuery">
+	  select count(rid) from recommend
+      WHERE 1=1
+      <include refid="queryDate"/>
+  </select>
+
+  <sql id="queryFriends">
+    <if test="query != null and query.startTime != null">
+      and r.date <![CDATA[>=]]> #{query.startTime}
+    </if>
+    <if test="query != null and query.endTime != null ">
+      and r.date <![CDATA[<=]]> #{query.endTime}
+    </if>
+  </sql>
+
+  <select id="listUserFriends" resultType="com.we.bean.Recommend">
+    select r.rid ,r.tid,r.uid,r.date,u.uid,us.rname as rname,u.tid from recommend r, `user` u ,`user` us
+    WHERE r.tid = u.uid and r.uid = us.uid and #{query.uid } = u.uid
+    <include refid="queryFriends"/>
+    order by r.date desc limit #{pager.offset} ,#{pager.limit}
+  </select>
+
+  <select id="countUserFriends" resultType="java.lang.Long" parameterType="com.we.query.RecommendQuery">
+    select count(r.rid) from recommend r, `user` u
+    WHERE r.tid = u.uid and #{query.uid } = u.uid
+    <include refid="queryFriends"/>
+  </select>
+
+</mapper>

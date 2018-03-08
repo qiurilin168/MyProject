@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.JurDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Jur" >
+    <id column="jid" property="jid" jdbcType="INTEGER" />
+    <result column="jurl" property="jurl" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    jid, jurl, content
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jur
+    where jid = #{jid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from jur
+    where jid = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Jur" >
+    insert into jur(name, url, perms,create_time) VALUES (#{name},#{url},#{perms},#{createTime})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Jur" >
+    insert into jur
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jid != null" >
+        jid,
+      </if>
+      <if test="jurl != null" >
+        jurl,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jid != null" >
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="jurl != null" >
+        #{jurl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Jur" >
+    update jur
+    <set >
+      <if test="jurl != null" >
+        jurl = #{jurl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where jid = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Jur" >
+    update jur
+    set jurl = #{jurl,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR}
+    where jid = #{jid,jdbcType=INTEGER}
+  </update>
+
+  <select id="listPager" resultType="com.we.bean.Jur">
+    select * from jur order by create_time desc
+    <if test="pager.offset != null and pager.limit!= null" >
+      limit #{pager.offset}, #{pager.limit}
+    </if>
+
+  </select>
+
+  <select id="listTreeVO" resultType="com.we.vo.JurTreeVO">
+    select id,name from jur order by create_time desc
+  </select>
+
+
+  <select id="countAll" resultType="java.lang.Long">
+    select count(id) from jur
+  </select>
+
+  <delete id="deletes">
+    delete from jur WHERE  id IN
+    <foreach collection="jurIds" item="jurId" separator="," open="(" close=")">
+      #{jurId}
+    </foreach>
+  </delete>
+
+  <select id="listByRoleId" resultType="com.we.bean.Jur" parameterType="java.lang.Integer">
+    SELECT j.* FROM  jur j,rolejur rj where rj.jid = j.jid and rj.rid = #{roleId}
+  </select>
+</mapper>

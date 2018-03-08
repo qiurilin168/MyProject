@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress SpringFacetInspection -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="cronJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="name" value="cronJobDetail" />
+        <property name="group" value="group1" />
+        <property name="jobClass" value="com.we.quertz.reward" />
+        <property name="durability" value="true" />
+    </bean>
+
+    <bean id="cronJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="cronJobTrigger" />
+        <property name="group" value="group1" />
+        <property name="jobDetail" ref="cronJobDetail" />
+        <property name="cronExpression" value="00 00 0 30 3,6,9,12 ? *" />
+    </bean>
+
+    <bean id="ydateJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="name" value="ydateJobDetail" />
+        <property name="group" value="group" />
+        <property name="jobClass" value="com.we.controller.quertz.ydate" />
+        <property name="durability" value="true" />
+    </bean>
+
+    <bean id="ydateJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="ydateJobTrigger" />
+        <property name="group" value="group" />
+        <property name="jobDetail" ref="ydateJobDetail" />
+        <property name="cronExpression" value="00 00 00 1 * ? *" />
+    </bean>
+
+    <bean id="borrowapplyJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="name" value="borrowapplyJobDetail" />
+        <property name="group" value="group" />
+        <property name="jobClass" value="com.we.controller.quertz.borrowapply" />
+        <property name="durability" value="true" />
+    </bean>
+
+    <bean id="borrowapplyJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="borrowapplyJobTrigger" />
+        <property name="group" value="group" />
+        <property name="jobDetail" ref="borrowapplyJobDetail" />
+        <property name="cronExpression" value="00 00 00 * * ? *" />
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="cronJobDetail" />
+                <ref bean="ydateJobDetail" />
+                <ref bean="borrowapplyJobDetail" />
+
+            </list>
+        </property>
+        <property name="triggers">
+            <list>
+                <ref bean="cronJobTrigger" />
+                <ref bean="ydateJobTrigger" />
+                <ref bean="borrowapplyJobTrigger" />
+            </list>
+        </property>
+    </bean>
+
+</beans>

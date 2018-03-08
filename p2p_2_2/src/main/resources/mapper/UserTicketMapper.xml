@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.dao.UserTicketDAO">
+  <resultMap id="BaseResultMap" type="com.we.bean.UserTicket">
+    <id column="rwid" jdbcType="INTEGER" property="rwid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="kid" jdbcType="INTEGER" property="kid" />
+    <result column="tktime" jdbcType="TIMESTAMP" property="tktime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rwid, uid, kid, tktime, state
+  </sql>
+  <select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_ticket
+    where rwid = #{rwid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer">
+    delete from user_ticket
+    where rwid = #{rwid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.UserTicket">
+    insert into user_ticket (rwid, uid, kid, 
+      tktime, state)
+    values (#{rwid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{kid,jdbcType=INTEGER}, 
+      #{tktime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.UserTicket">
+    insert into user_ticket
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rwid != null">
+        rwid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="kid != null">
+        kid,
+      </if>
+      <if test="tktime != null">
+        tktime,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rwid != null">
+        #{rwid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="tktime != null">
+        #{tktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.UserTicket">
+    update user_ticket
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        kid = #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="tktime != null">
+        tktime = #{tktime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where rwid = #{rwid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.UserTicket">
+    update user_ticket
+    set uid = #{uid,jdbcType=INTEGER},
+      kid = #{kid,jdbcType=INTEGER},
+      tktime = #{tktime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
+    where rwid = #{rwid,jdbcType=INTEGER}
+  </update>
+
+  <select id="getByUidKid" resultType="userTicket">
+      SELECT * FROM d_ssm_pujinziben.user_ticket
+      WHERE uid=#{uid} AND kid=#{kid}
+  </select>
+
+  <delete id="deletesByTicketId" >
+    delete from user_ticket WHERE kid  IN
+    <foreach collection="ticketIds" item="ticketId" separator="," open="(" close=")">
+      #{ticketId}
+    </foreach>
+  </delete>
+
+  <select id="queryUserTicket" resultType="com.we.vo.UserTicketVO">
+    select tkmoney as value,ut.kid as id from user_ticket ut,ticket t
+    where ut.kid = t.umid and ut.state = 2 and t.tktime > now() and ut.uid = #{userId};
+  </select>
+</mapper>

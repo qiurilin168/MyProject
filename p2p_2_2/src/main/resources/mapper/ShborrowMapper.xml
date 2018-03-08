@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.ShborrowDAO">
+    <resultMap id="BaseResultMap" type="com.we.bean.Shborrow">
+        <id column="shid" property="shid" jdbcType="INTEGER"/>
+        <result column="huid" property="huid" jdbcType="INTEGER"/>
+        <result column="isok" property="isok" jdbcType="INTEGER"/>
+        <result column="excuse" property="excuse" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="TIMESTAMP"/>
+        <result column="baid" property="baid" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        shid, huid, isok, excuse, date, baid
+    </sql>
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from shborrow
+        where shid = #{shid,jdbcType=INTEGER}
+    </select>
+    <delete id="removeById" parameterType="java.lang.Integer">
+        DELETE FROM shborrow
+        WHERE shid = #{shid,jdbcType=INTEGER}
+    </delete>
+    <insert id="save" parameterType="com.we.bean.Shborrow">
+        INSERT INTO shborrow (shid, huid, isok,
+                              excuse, date, baid
+        )
+        VALUES (#{shid,jdbcType=INTEGER}, #{huid,jdbcType=INTEGER}, #{isok,jdbcType=INTEGER},
+                #{excuse,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{baid,jdbcType=INTEGER}
+        )
+    </insert>
+    <insert id="saveSelective" parameterType="com.we.bean.Shborrow">
+        insert into shborrow
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="shid != null">
+                shid,
+            </if>
+            <if test="huid != null">
+                huid,
+            </if>
+            <if test="isok != null">
+                isok,
+            </if>
+            <if test="excuse != null">
+                excuse,
+            </if>
+            <if test="date != null">
+                date,
+            </if>
+            <if test="baid != null">
+                baid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="shid != null">
+                #{shid,jdbcType=INTEGER},
+            </if>
+            <if test="huid != null">
+                #{huid,jdbcType=INTEGER},
+            </if>
+            <if test="isok != null">
+                #{isok,jdbcType=INTEGER},
+            </if>
+            <if test="excuse != null">
+                #{excuse,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="baid != null">
+                #{baid,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSelective" parameterType="com.we.bean.Shborrow">
+        update shborrow
+        <set>
+            <if test="huid != null">
+                huid = #{huid,jdbcType=INTEGER},
+            </if>
+            <if test="isok != null">
+                isok = #{isok,jdbcType=INTEGER},
+            </if>
+            <if test="excuse != null">
+                excuse = #{excuse,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                date = #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="baid != null">
+                baid = #{baid,jdbcType=INTEGER},
+            </if>
+        </set>
+        where shid = #{shid,jdbcType=INTEGER}
+    </update>
+    <update id="update" parameterType="com.we.bean.Shborrow">
+        UPDATE shborrow
+        SET huid   = #{huid,jdbcType=INTEGER},
+            isok   = #{isok,jdbcType=INTEGER},
+            excuse = #{excuse,jdbcType=VARCHAR},
+            date   = #{date,jdbcType=TIMESTAMP},
+            baid   = #{baid,jdbcType=INTEGER}
+        WHERE shid = #{shid,jdbcType=INTEGER}
+    </update>
+
+    <sql id="queryCriteria">
+        FROM borrowapply b, bz, jklx j, user u, shborrow s
+        WHERE
+        b.uid = u.uid
+        AND b.bzid = bz.bzid
+        AND b.type = j.lxid
+        AND bz.state = 1
+        AND j.state = 1
+        AND s.baid = b.baid
+        AND b.state in (0, 2)
+        AND (s.huid is null or s.huid=#{query.huid})
+    </sql>
+
+    <select id="listCriteria" resultType="com.we.vo.ShborrowVO">
+        SELECT
+        b.rname,b.money, b.state, b.deadline, b.term, b.time AS 'applyTime',
+        s.date AS 'checkTime', s.excuse, bz.bzname, j.lxname, s.shid, s.baid
+        <include refid="queryCriteria"/>
+        ORDER BY b.state DESC, b.time DESC
+        LIMIT #{pager.offset}, #{pager.limit}
+    </select>
+
+    <select id="countCriteria" resultType="java.lang.Long">
+        SELECT count(s.shid)
+        <include refid="queryCriteria"/>
+    </select>
+
+    <select id="getByBaid" resultType="shborrow">
+        SELECT * FROM d_ssm_pujinziben.shborrow
+        WHERE baid=#{baid}
+    </select>
+</mapper>
